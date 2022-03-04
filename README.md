@@ -26,9 +26,7 @@ Frontend: React-Redux
 
 To get a local copy up and running follow these simple steps:
 
-    Clone the repository
-
-git clone https://github.com/Vinyla/news-portal.git
+    Clone the repository with git clone https://github.com/Vinyla/news-portal.git
 
     Install NPM packages with npm install
 
