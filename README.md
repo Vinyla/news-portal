@@ -20,7 +20,7 @@ Frontend: React-Redux
 3. redux - global state management
 4. redux-thunk - middleware
 5. redux-devtools-extension - debugging application's state
-6. axios - fetching data
+6. dotenv - storing secret data
 
 ## How to clone, install and start the aplication
 
