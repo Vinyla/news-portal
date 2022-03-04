@@ -17,7 +17,7 @@ Frontend: React-Redux
 
 1. create-react-app - create react app
 2. axios - fetching data
-3. edux - global state management
+3. redux - global state management
 4. redux-thunk - middleware
 5. redux-devtools-extension - debugging application's state
 6. axios - fetching data
