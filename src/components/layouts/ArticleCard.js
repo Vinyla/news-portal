@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { readFullArticle } from '../redux/actions/newsActions';
-import noImg from '../assets/images/no-image.png';
+import { readFullArticle } from '../../redux/actions/newsActions';
+import noImg from '../../assets/images/no-image.png';
 
 const ArticleCard = (props) => {
   const { urlToImage, title, description } = props.article;

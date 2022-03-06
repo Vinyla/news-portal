@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { searchArticles } from '../redux/actions/newsActions';
-import { SET_QUERRY } from '../redux/reducers/types';
+import { searchArticles } from '../../redux/actions/newsActions';
 
 const SearchInput = () => {
   const [inputText, setInputText] = useState('');

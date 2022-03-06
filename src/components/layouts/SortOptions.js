@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSortingValue } from '../redux/actions/newsActions';
+import { setSortingValue } from '../../redux/actions/newsActions';
 
 const SortOptions = () => {
   const querry = useSelector((state) => state.news.querry);

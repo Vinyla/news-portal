@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ArticlesList from './ArticlesList';
-import { fetchArticles } from '../redux/actions/newsActions';
-import SortOptions from './SortOptions';
-import Message from './Message';
-import Loading from './Loading';
+import { fetchArticles } from '../../redux/actions/newsActions';
+import ArticlesList from '../layouts/ArticlesList';
+import SortOptions from '../layouts/SortOptions';
+import Message from '../layouts/Message';
+import Loading from '../layouts/Loading';
 
 const MainPage = () => {
   const articles = useSelector((state) => state.news.articles);
