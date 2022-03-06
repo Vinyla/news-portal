@@ -5,7 +5,6 @@ import {
   SORT_BY,
   GET_ARTICLE,
   LOADING,
-  LOAD_MORE,
 } from './types';
 import axios from 'axios';
 

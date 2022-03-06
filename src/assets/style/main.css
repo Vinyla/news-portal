@@ -174,10 +174,16 @@ button {
 }
 
 .article {
-  max-width: 800px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.article img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
 }
 
 .article h2 {
@@ -193,7 +199,7 @@ button {
 
 @media screen and (max-width: 1250px) {
   .cards {
-    grid-template-columns: repeat(3, 300px);
+    grid-template-columns: repeat(3, 320px);
   }
   .sort {
     width: 40%;
@@ -202,16 +208,19 @@ button {
 
 @media screen and (max-width: 800px) {
   .cards {
-    grid-template-columns: repeat(2, 300px);
+    grid-template-columns: repeat(2, 320px);
   }
   .sort {
     width: 80%;
+  }
+  .article h2 {
+    font-size: 18px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .cards {
-    grid-template-columns: repeat(1, 300px);
+    grid-template-columns: repeat(1, 350px);
   }
   .sort {
     width: 80%;
@@ -221,5 +230,8 @@ button {
   }
   .form input:focus {
     padding-right: 0;
+  }
+  .article h2 {
+    font-size: 18px;
   }
 }
