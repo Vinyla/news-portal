@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { searchArticles } from '../redux/actions/newsActions';
 
 const SearchInput = () => {
+  const sortValue = useSelector((state) => state.news.sortBy);
   const [inputText, setInputText] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const SearchInput = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(searchArticles(inputText));
+    dispatch(searchArticles(inputText, sortValue));
     setInputText('');
     navigate('/');
   };

@@ -1,9 +1,11 @@
 import {
   FETCH_ARTICLES,
   SEARCH_ARTICLES,
-  SORT_NEWS,
+  SORT_OPTIONS,
+  SORT_BY,
   GET_ARTICLE,
   LOADING,
+  LOAD_MORE,
 } from './types';
 import api from '../../api/newsApi';
 
@@ -11,6 +13,7 @@ const apiKey = process.env.REACT_APP_NEWS_API;
 
 // fetch data from api
 export const fetchArticles = () => async (dispatch) => {
+  //loading spinner
   dispatch({ type: LOADING });
   try {
     const response = await api.get(
@@ -26,12 +29,13 @@ export const fetchArticles = () => async (dispatch) => {
 };
 
 // search data from api
-export const searchArticles = (term) => async (dispatch) => {
+export const searchArticles = (term, sortBy) => async (dispatch) => {
   dispatch({ type: LOADING });
-  dispatch({ type: SORT_NEWS });
+  //on user search set sorting options visible
+  dispatch({ type: SORT_OPTIONS });
   try {
     const response = await api.get(
-      `everything?q=${term}&apiKey=${apiKey}`
+      `everything?q=${term}&sortBy=${sortBy}&apiKey=${apiKey}`
     );
     dispatch({
       type: SEARCH_ARTICLES,
@@ -42,9 +46,19 @@ export const searchArticles = (term) => async (dispatch) => {
   }
 };
 
-export const getArticleById = (id) => {
+export const setSrotingValue = (value) => (dispatch) => {
+  dispatch(searchArticles());
   return {
-    type: GET_ARTICLE,
-    payload: id,
+    type: SORT_BY,
+    payload: value,
   };
 };
+
+export const loadMoreArticles = () => {};
+
+// export const getArticleById = (id) => {
+//   return {
+//     type: GET_ARTICLE,
+//     payload: id,
+//   };
+// };

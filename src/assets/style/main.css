@@ -64,12 +64,18 @@ button {
 }
 
 .sort {
+  display: flex;
+  justify-content: center;
   text-align: center;
   width: 20%;
   margin: 30px auto;
   padding: 20px 12px;
   border-radius: 10px;
   background-color: #111214;
+}
+
+.sort select {
+  margin-left: 10px;
 }
 
 .sort h3 {

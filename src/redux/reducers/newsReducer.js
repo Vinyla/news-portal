@@ -1,16 +1,17 @@
 import {
   SEARCH_ARTICLES,
   FETCH_ARTICLES,
-  SORT_NEWS,
-  GET_ARTICLE,
+  SORT_OPTIONS,
   LOADING,
+  SORT_BY,
 } from './types';
 
 const initialState = {
-  articles: [],
-  sorting: false,
-  article: {},
   loading: false,
+  articles: [],
+  article: {},
+  sorting: false,
+  sortBy: 'publishedAt',
 };
 
 export const newsReducer = (state = initialState, action) => {
@@ -32,15 +33,16 @@ export const newsReducer = (state = initialState, action) => {
         articles: action.payload,
         loading: false,
       };
-    case SORT_NEWS:
+    case SORT_OPTIONS:
       return {
         ...state,
         sorting: true,
+        sortBy: action.payload,
       };
-    case GET_ARTICLE:
+    case SORT_BY:
       return {
         ...state,
-        article: action.payload,
+        sortBy: action.payload,
       };
     default:
       return state;
