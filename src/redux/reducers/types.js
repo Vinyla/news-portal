@@ -1,5 +1,4 @@
 export const FETCH_ARTICLES = 'FETCH_ARTICLES';
-export const SEARCH_ARTICLES = 'SEARCH_ARTICLES';
 export const SET_QUERRY = 'SET_QUERRY';
 export const SORT_OPTIONS_VISIBLE = 'SORT_OPTIONS_VISIBLE';
 export const SORT_BY = 'SORT_BY';

@@ -16,11 +16,7 @@ const SortOptions = () => {
     <div className="sort">
       <div className="sort-options">
         <label htmlFor="sort">Sort by</label>
-        <select
-          onChange={sortArticlesByOptions}
-          value={sortBy}
-          id="sort"
-        >
+        <select onChange={sortArticlesByOptions} value={sortBy}>
           <option value="publishedAt">Published Date</option>
           <option value="popularity">Popularity</option>
           <option value="relevancy">Relevance</option>

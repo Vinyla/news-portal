@@ -80,6 +80,13 @@ button {
 
 .sort select {
   margin-left: 10px;
+  background-color: #6bbb48;
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-weight: 700;
 }
 
 .sort h3 {

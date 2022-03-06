@@ -1,20 +1,21 @@
 import {
-  SEARCH_ARTICLES,
   FETCH_ARTICLES,
   SORT_OPTIONS_VISIBLE,
   LOADING,
   SORT_BY,
   SET_QUERRY,
   GET_ARTICLE,
+  LOAD_MORE,
 } from './types';
 
 const initialState = {
   loading: false,
   articles: [],
   article: {},
+  querry: '',
   sorting: false,
   sortBy: '',
-  querry: '',
+  loadMore: false,
 };
 
 export const newsReducer = (state = initialState, action) => {
@@ -27,19 +28,12 @@ export const newsReducer = (state = initialState, action) => {
       return {
         ...state,
         articles: action.payload,
-        sorting: false,
         loading: false,
       };
     case SET_QUERRY:
       return {
         ...state,
         querry: action.payload,
-      };
-    case SEARCH_ARTICLES:
-      return {
-        ...state,
-        articles: action.payload,
-        loading: false,
       };
     case SORT_OPTIONS_VISIBLE:
       return {
@@ -55,6 +49,10 @@ export const newsReducer = (state = initialState, action) => {
       return {
         ...state,
         article: action.payload,
+      };
+    case LOAD_MORE:
+      return {
+        loadMore: true,
       };
     default:
       return state;

@@ -1,6 +1,5 @@
 import {
   FETCH_ARTICLES,
-  SEARCH_ARTICLES,
   SET_QUERRY,
   SORT_OPTIONS_VISIBLE,
   SORT_BY,
@@ -8,42 +7,40 @@ import {
   LOADING,
   LOAD_MORE,
 } from './types';
-import api from '../../api/newsApi';
+import axios from 'axios';
 
 const apiKey = process.env.REACT_APP_NEWS_API;
+const baseURL = 'https://newsapi.org/v2/';
 
 // fetch data from api
-export const fetchArticles = () => async (dispatch) => {
+export const fetchArticles = () => (dispatch) => {
   dispatch({ type: LOADING });
-  try {
-    const response = await api.get(
-      `top-headlines?country=us&apiKey=${apiKey}`
-    );
-    dispatch({
-      type: FETCH_ARTICLES,
-      payload: response.data.articles,
-    });
-  } catch (error) {
-    console.log(error);
-  }
+  axios
+    .get(`${baseURL}top-headlines?country=us&apiKey=${apiKey}`)
+    .then((response) => {
+      dispatch({
+        type: FETCH_ARTICLES,
+        payload: response.data.articles,
+      });
+    })
+    .catch((error) => console.log(error));
 };
 
 // search data from api
-export const searchArticles = (term, sortBy) => async (dispatch) => {
+export const searchArticles = (term, sortBy) => (dispatch) => {
   dispatch({ type: LOADING });
-  // set visible sorting options after the user searches for the term
+  axios
+    .get(
+      `${baseURL}everything?q=${term}&sortBy=${sortBy}&apiKey=${apiKey}`
+    )
+    .then((response) => {
+      dispatch({
+        type: FETCH_ARTICLES,
+        payload: response.data.articles,
+      });
+    })
+    .catch((error) => console.log(error));
   dispatch({ type: SORT_OPTIONS_VISIBLE });
-  try {
-    const response = await api.get(
-      `everything?q=${term}&sortBy=${sortBy}&apiKey=${apiKey}`
-    );
-    dispatch({
-      type: SEARCH_ARTICLES,
-      payload: response.data.articles,
-    });
-  } catch (error) {
-    console.log(error);
-  }
   dispatch({ type: SET_QUERRY, payload: term });
 };
 
@@ -52,8 +49,6 @@ export const setSortingValue = (term, value) => (dispatch) => {
   dispatch(searchArticles(term, value));
   dispatch({ type: SORT_BY, payload: value });
 };
-
-export const loadMoreArticles = () => {};
 
 // get full info about the article
 export const readFullArticle = (article) => (dispatch) => {

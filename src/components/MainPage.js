@@ -8,21 +8,22 @@ import Loading from './Loading';
 
 const MainPage = () => {
   const articles = useSelector((state) => state.news.articles);
-  const sorting = useSelector((state) => state.news.sorting);
-  const loading = useSelector((state) => state.news.loading);
+  const sortingOptions = useSelector((state) => state.news.sorting);
+  const spinner = useSelector((state) => state.news.loading);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(fetchArticles());
+    dispatch(fetchArticles());
   }, []);
 
-  if (loading) {
+  if (spinner) {
     return <Loading />;
   }
   return (
     <div className="main">
       {articles.length === 0 && <Message />}
-      {sorting && articles.length > 1 && <SortOptions />}
+      {sortingOptions && <SortOptions />}
       <ArticlesList />
     </div>
   );

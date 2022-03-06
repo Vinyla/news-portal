@@ -17,7 +17,6 @@ const SearchInput = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: SET_QUERRY, payload: inputText });
     dispatch(searchArticles(inputText, sortValue));
     setInputText('');
     navigate('/');

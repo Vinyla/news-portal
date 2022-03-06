@@ -11,16 +11,16 @@ const ArticleCard = (props) => {
 
   const onReadMoreClick = () => {
     dispatch(readFullArticle(props.article));
-    navigate('/' + props.id);
+    navigate('/' + props.article.title);
   };
 
   return (
     <div className="card">
       <div className="card-header">
-        {urlToImage ? (
-          <img src={urlToImage} alt="article-img" />
-        ) : (
+        {urlToImage === undefined ? (
           <img src={noImg} alt="article-img" />
+        ) : (
+          <img src={urlToImage} alt="article-img" />
         )}
       </div>
 
