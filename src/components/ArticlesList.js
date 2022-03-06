@@ -9,7 +9,7 @@ const ArticlesList = () => {
   return (
     <div className="cards">
       {articles.map((article, i) => (
-        <ArticleCard key={i} id={i} article={article} />
+        <ArticleCard key={i} article={article} />
       ))}
     </div>
   );

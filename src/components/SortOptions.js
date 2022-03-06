@@ -1,18 +1,25 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSrotingValue } from '../redux/actions/newsActions';
+import { setSortingValue } from '../redux/actions/newsActions';
 
 const SortOptions = () => {
-  const sortValue = useSelector((state) => state.news.sortBy);
+  const querry = useSelector((state) => state.news.querry);
+  const sortBy = useSelector((state) => state.news.sortBy);
   const dispatch = useDispatch();
-  console.log(sortValue);
+
+  const sortArticlesByOptions = (e) => {
+    e.preventDefault();
+    dispatch(setSortingValue(querry, e.target.value));
+  };
 
   return (
     <div className="sort">
-      <h3>Sort by</h3>
       <div className="sort-options">
+        <label htmlFor="sort">Sort by</label>
         <select
-          onChange={(e) => dispatch(setSrotingValue(e.target.value))}
+          onChange={sortArticlesByOptions}
+          value={sortBy}
+          id="sort"
         >
           <option value="publishedAt">Published Date</option>
           <option value="popularity">Popularity</option>

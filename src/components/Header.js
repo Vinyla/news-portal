@@ -11,7 +11,7 @@ const Header = () => {
 
   const returnToHome = () => {
     navigate('/');
-    dispatch(fetchArticles());
+    // dispatch(fetchArticles());
   };
 
   return (

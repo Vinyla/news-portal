@@ -7,6 +7,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.main {
+  margin: 20px 0;
+}
+
 .header {
   background-color: #111214;
   height: 60px;
@@ -155,15 +159,34 @@ button {
   margin: 20px;
 }
 
-@media screen and (max-width: 1300px) {
+.container {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.article {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.article h2 {
+  color: #6bbb48;
+}
+
+@media screen and (min-width: 1300px) {
   .cards {
-    grid-gap: 20px;
+    grid-template-columns: repeat(4, 350px);
+    grid-gap: 30px;
   }
 }
 
 @media screen and (max-width: 1250px) {
   .cards {
-    grid-template-columns: repeat(3, 280px);
+    grid-template-columns: repeat(3, 300px);
   }
   .sort {
     width: 40%;

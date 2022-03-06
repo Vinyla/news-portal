@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { searchArticles } from '../redux/actions/newsActions';
+import { SET_QUERRY } from '../redux/reducers/types';
 
 const SearchInput = () => {
-  const sortValue = useSelector((state) => state.news.sortBy);
   const [inputText, setInputText] = useState('');
+  const sortValue = useSelector((state) => state.news.sortBy);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -15,6 +17,7 @@ const SearchInput = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    dispatch({ type: SET_QUERRY, payload: inputText });
     dispatch(searchArticles(inputText, sortValue));
     setInputText('');
     navigate('/');

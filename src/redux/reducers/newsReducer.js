@@ -1,9 +1,11 @@
 import {
   SEARCH_ARTICLES,
   FETCH_ARTICLES,
-  SORT_OPTIONS,
+  SORT_OPTIONS_VISIBLE,
   LOADING,
   SORT_BY,
+  SET_QUERRY,
+  GET_ARTICLE,
 } from './types';
 
 const initialState = {
@@ -11,7 +13,8 @@ const initialState = {
   articles: [],
   article: {},
   sorting: false,
-  sortBy: 'publishedAt',
+  sortBy: '',
+  querry: '',
 };
 
 export const newsReducer = (state = initialState, action) => {
@@ -27,22 +30,31 @@ export const newsReducer = (state = initialState, action) => {
         sorting: false,
         loading: false,
       };
+    case SET_QUERRY:
+      return {
+        ...state,
+        querry: action.payload,
+      };
     case SEARCH_ARTICLES:
       return {
         ...state,
         articles: action.payload,
         loading: false,
       };
-    case SORT_OPTIONS:
+    case SORT_OPTIONS_VISIBLE:
       return {
         ...state,
         sorting: true,
-        sortBy: action.payload,
       };
     case SORT_BY:
       return {
         ...state,
         sortBy: action.payload,
+      };
+    case GET_ARTICLE:
+      return {
+        ...state,
+        article: action.payload,
       };
     default:
       return state;

@@ -1,7 +1,8 @@
 import {
   FETCH_ARTICLES,
   SEARCH_ARTICLES,
-  SORT_OPTIONS,
+  SET_QUERRY,
+  SORT_OPTIONS_VISIBLE,
   SORT_BY,
   GET_ARTICLE,
   LOADING,
@@ -13,7 +14,6 @@ const apiKey = process.env.REACT_APP_NEWS_API;
 
 // fetch data from api
 export const fetchArticles = () => async (dispatch) => {
-  //loading spinner
   dispatch({ type: LOADING });
   try {
     const response = await api.get(
@@ -31,8 +31,8 @@ export const fetchArticles = () => async (dispatch) => {
 // search data from api
 export const searchArticles = (term, sortBy) => async (dispatch) => {
   dispatch({ type: LOADING });
-  //on user search set sorting options visible
-  dispatch({ type: SORT_OPTIONS });
+  // set visible sorting options after the user searches for the term
+  dispatch({ type: SORT_OPTIONS_VISIBLE });
   try {
     const response = await api.get(
       `everything?q=${term}&sortBy=${sortBy}&apiKey=${apiKey}`
@@ -44,21 +44,18 @@ export const searchArticles = (term, sortBy) => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
+  dispatch({ type: SET_QUERRY, payload: term });
 };
 
-export const setSrotingValue = (value) => (dispatch) => {
-  dispatch(searchArticles());
-  return {
-    type: SORT_BY,
-    payload: value,
-  };
+// sorting by options value
+export const setSortingValue = (term, value) => (dispatch) => {
+  dispatch(searchArticles(term, value));
+  dispatch({ type: SORT_BY, payload: value });
 };
 
 export const loadMoreArticles = () => {};
 
-// export const getArticleById = (id) => {
-//   return {
-//     type: GET_ARTICLE,
-//     payload: id,
-//   };
-// };
+// get full info about the article
+export const readFullArticle = (article) => (dispatch) => {
+  dispatch({ type: GET_ARTICLE, payload: article });
+};
