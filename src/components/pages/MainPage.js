@@ -10,8 +10,9 @@ const MainPage = () => {
   const articles = useSelector((state) => state.news.articles);
   const sortingOptions = useSelector((state) => state.news.sorting);
   const spinner = useSelector((state) => state.news.loading);
-
   const dispatch = useDispatch();
+  const page = useSelector((state) => state.news.page);
+  console.log(page);
 
   useEffect(() => {
     dispatch(fetchArticles());
@@ -20,6 +21,7 @@ const MainPage = () => {
   if (spinner) {
     return <Loading />;
   }
+
   return (
     <div className="main">
       {articles.length === 0 && <Message />}

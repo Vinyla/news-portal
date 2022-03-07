@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   FETCH_ARTICLES,
   SET_QUERRY,
@@ -6,7 +7,6 @@ import {
   GET_ARTICLE,
   LOADING,
 } from './types';
-import axios from 'axios';
 
 const apiKey = process.env.REACT_APP_NEWS_API;
 const baseURL = 'https://newsapi.org/v2/';
@@ -41,6 +41,7 @@ export const searchArticles = (term, sortBy) => (dispatch) => {
     .catch((error) => console.log(error));
   dispatch({ type: SORT_OPTIONS_VISIBLE });
   dispatch({ type: SET_QUERRY, payload: term });
+  dispatch({ type: 'PAGE' });
 };
 
 // sorting by options value

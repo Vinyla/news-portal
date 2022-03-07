@@ -5,7 +5,6 @@ import {
   SORT_BY,
   SET_QUERRY,
   GET_ARTICLE,
-  LOAD_MORE,
 } from './types';
 
 const initialState = {
@@ -15,7 +14,7 @@ const initialState = {
   querry: '',
   sorting: false,
   sortBy: '',
-  loadMore: false,
+  page: 5,
 };
 
 export const newsReducer = (state = initialState, action) => {
@@ -35,6 +34,11 @@ export const newsReducer = (state = initialState, action) => {
         ...state,
         querry: action.payload,
       };
+    case GET_ARTICLE:
+      return {
+        ...state,
+        article: action.payload,
+      };
     case SORT_OPTIONS_VISIBLE:
       return {
         ...state,
@@ -44,15 +48,6 @@ export const newsReducer = (state = initialState, action) => {
       return {
         ...state,
         sortBy: action.payload,
-      };
-    case GET_ARTICLE:
-      return {
-        ...state,
-        article: action.payload,
-      };
-    case LOAD_MORE:
-      return {
-        loadMore: true,
       };
     default:
       return state;
