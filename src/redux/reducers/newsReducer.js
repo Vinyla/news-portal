@@ -4,8 +4,6 @@ const initialState = {
   querry: '',
   sort: false,
   sortBy: '',
-  page: 1,
-  pageSize: 20,
   loading: false,
 };
 export const newsReducer = (state = initialState, action) => {
@@ -31,11 +29,6 @@ export const newsReducer = (state = initialState, action) => {
         ...state,
         sort: true,
         sortBy: action.payload,
-      };
-    case 'PAGE':
-      return {
-        ...state,
-        page: state.page + 1,
       };
     case 'LOADING':
       return {

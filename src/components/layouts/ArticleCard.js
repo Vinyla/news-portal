@@ -17,16 +17,14 @@ const ArticleCard = (props) => {
   return (
     <div className="card">
       <div className="card-header">
-        {urlToImage === undefined ? (
-          <img src={noImg} alt="article-img" />
-        ) : (
-          <img src={urlToImage} alt="article-img" />
-        )}
+        <img
+          src={urlToImage ? urlToImage : noImg}
+          alt="article-img"
+        />
       </div>
-
       <div className="card-info">
-        <h3>{title}</h3>
-        {description ? <p>{description}</p> : <p>No Description.</p>}
+        <h3>{title ? title : 'No title'}</h3>
+        <p>{description ? description : 'No description'}</p>
       </div>
 
       <div className="card-footer">

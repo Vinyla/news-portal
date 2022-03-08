@@ -18,10 +18,10 @@ export const fetchDataFromApi = async (page) => {
   }
 };
 
-export const searchDataFromApi = async (querry, sortBy, page) => {
+export const searchDataFromApi = async (querry, sortBy) => {
   try {
     const res = await axios.get(
-      `${baseURL}everything?q=${querry}&sortBy=${sortBy}&page=${page}&apiKey=${apiKey}`
+      `${baseURL}everything?q=${querry}&sortBy=${sortBy}&apiKey=${apiKey}`
     );
     return res.data;
   } catch (err) {

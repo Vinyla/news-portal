@@ -6,7 +6,8 @@ import logo from '../../assets/images/logo.png';
 const Header = () => {
   const navigate = useNavigate();
 
-  const returnToHome = () => {
+  const returnToHome = (e) => {
+    e.preventDefault();
     navigate('/');
     window.location.reload();
   };
