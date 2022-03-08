@@ -1,17 +1,14 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchArticles } from '../../redux/actions/newsActions';
 import SearchInput from './SearchInput';
 import logo from '../../assets/images/logo.png';
 
 const Header = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const returnToHome = () => {
     navigate('/');
-    dispatch(fetchArticles());
+    window.location.reload();
   };
 
   return (

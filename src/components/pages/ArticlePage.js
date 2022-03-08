@@ -19,14 +19,14 @@ const ArticlePage = () => {
     <div className="container">
       <div className="article">
         <img src={urlToImage} alt="article-img" />
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <p>{content}</p>
+        <h2>{title ? title : 'No Title'}</h2>
+        <p>{description ? description : 'No description'}</p>
+        <p>{content ? content : 'No content'}</p>
         <p>
-          {author}&nbsp;
-          {source.name}
+          {author ? author : null}&nbsp;
+          {source.name ? source.name : null}
         </p>
-        <p>{formatDate}</p>
+        <p>{publishedAt ? formatDate : null}</p>
       </div>
     </div>
   );

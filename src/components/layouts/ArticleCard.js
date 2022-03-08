@@ -1,16 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { readFullArticle } from '../../redux/actions/newsActions';
+import { useNavigate } from 'react-router-dom';
+import { getSingleArticle } from '../../redux/actions/newsActions';
 import noImg from '../../assets/images/no-image.png';
 
 const ArticleCard = (props) => {
-  const { urlToImage, title, description } = props.article;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { urlToImage, title, description } = props.article;
 
-  const onReadMoreClick = () => {
-    dispatch(readFullArticle(props.article));
+  const onReadMoreHandler = () => {
+    dispatch(getSingleArticle(props.article));
     navigate('/' + props.article.title);
   };
 
@@ -30,7 +30,7 @@ const ArticleCard = (props) => {
       </div>
 
       <div className="card-footer">
-        <button onClick={onReadMoreClick}>Read Full Article</button>
+        <button onClick={onReadMoreHandler}>Read Full Article</button>
       </div>
     </div>
   );

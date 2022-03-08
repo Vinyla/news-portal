@@ -1,53 +1,46 @@
-import {
-  FETCH_ARTICLES,
-  SORT_OPTIONS_VISIBLE,
-  LOADING,
-  SORT_BY,
-  SET_QUERRY,
-  GET_ARTICLE,
-} from './types';
-
 const initialState = {
-  loading: false,
   articles: [],
   article: {},
   querry: '',
-  sorting: false,
+  sort: false,
   sortBy: '',
-  page: 5,
+  page: 1,
+  pageSize: 20,
+  loading: false,
 };
-
 export const newsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOADING:
-      return {
-        loading: true,
-      };
-    case FETCH_ARTICLES:
+    case 'GET_ARTICLES':
       return {
         ...state,
         articles: action.payload,
         loading: false,
       };
-    case SET_QUERRY:
-      return {
-        ...state,
-        querry: action.payload,
-      };
-    case GET_ARTICLE:
+    case 'GET_ARTICLE':
       return {
         ...state,
         article: action.payload,
       };
-    case SORT_OPTIONS_VISIBLE:
+    case 'QUERRY':
       return {
         ...state,
-        sorting: true,
+        querry: action.payload,
       };
-    case SORT_BY:
+    case 'SORT_OPTIONS':
       return {
         ...state,
+        sort: true,
         sortBy: action.payload,
+      };
+    case 'PAGE':
+      return {
+        ...state,
+        page: state.page + 1,
+      };
+    case 'LOADING':
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;

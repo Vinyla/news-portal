@@ -1,15 +1,24 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSortingValue } from '../../redux/actions/newsActions';
+import {
+  sortArticles,
+  fetchListOfArticles,
+  loadingSpinner,
+} from '../../redux/actions/newsActions';
+import { searchDataFromApi } from '../../api/newsApi.js';
 
 const SortOptions = () => {
-  const querry = useSelector((state) => state.news.querry);
   const sortBy = useSelector((state) => state.news.sortBy);
+  const querry = useSelector((state) => state.news.querry);
   const dispatch = useDispatch();
 
   const sortArticlesByOptions = (e) => {
     e.preventDefault();
-    dispatch(setSortingValue(querry, e.target.value));
+    dispatch(loadingSpinner());
+    dispatch(sortArticles(e.target.value));
+    searchDataFromApi(querry, sortBy).then((data) => {
+      dispatch(fetchListOfArticles(data.articles));
+    });
   };
 
   return (

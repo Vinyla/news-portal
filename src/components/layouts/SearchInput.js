@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { searchArticles } from '../../redux/actions/newsActions';
+import {
+  fetchListOfArticles,
+  loadingSpinner,
+  setQuerry,
+  sortArticles,
+} from '../../redux/actions/newsActions';
+import { searchDataFromApi } from '../../api/newsApi.js';
 
 const SearchInput = () => {
   const [inputText, setInputText] = useState('');
-  const sortValue = useSelector((state) => state.news.sortBy);
+  const sortBy = useSelector((state) => state.news.sortBy);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,7 +22,12 @@ const SearchInput = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(searchArticles(inputText, sortValue));
+    dispatch(loadingSpinner());
+    searchDataFromApi(inputText, sortBy).then((data) => {
+      dispatch(fetchListOfArticles(data.articles));
+    });
+    dispatch(setQuerry(inputText));
+    dispatch(sortArticles(sortBy));
     setInputText('');
     navigate('/');
   };

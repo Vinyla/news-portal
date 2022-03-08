@@ -8,6 +8,10 @@ body {
 }
 
 .main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 20px 0;
 }
 
@@ -178,6 +182,9 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #111214;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .article img {
@@ -188,6 +195,14 @@ button {
 
 .article h2 {
   color: #6bbb48;
+}
+
+.load-more {
+  margin-top: 20px;
+}
+
+.load-more button {
+  margin: 0 10px;
 }
 
 @media screen and (min-width: 1300px) {
