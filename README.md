@@ -31,6 +31,10 @@ To get a local copy up and running follow these simple steps:
     Install NPM packages with npm install
 
     Start the project with npm start
+    
+## Set your Api key:
+    
+    api/newsApi - replace the key from .env file with Api key
 
 
 
